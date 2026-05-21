@@ -17,10 +17,10 @@
 	"dependencies": {
 		"@astrojs/check": "^0.9.9",
 		"@astrojs/rss": "^4.0.18",
-		"@astrojs/starlight": "0.39.0",
+		"@astrojs/starlight": "0.39.2",
 		"@resvg/resvg-js": "^2.6.2",
 		"@tailwindcss/vite": "^4.3.0",
-		"astro": "^6.3.6",
+		"astro": "^6.3.7",
 		"prettier": "^3.8.3",
 		"rehype-external-links": "^3.0.0",
 		"satori": "^0.26.0",
