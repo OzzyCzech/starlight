@@ -8,11 +8,11 @@ import youtube from './src/markdown/youtube.ts';
 
 const user = (await import('./src/starlight.config.mjs')).default;
 
-const ogEnabled = user.og !== false && (user.og === undefined || user.og.enabled !== false);
-
 const starlightConfig = { ...(user.starlight ?? {}) };
 const components = { ...(starlightConfig.components ?? {}) };
-if (ogEnabled && !components.Head) {
+// Head carries the Markdown alternate link (always) and OG meta (self-gated
+// via ogEnabled inside the component), so register it regardless of OG setting.
+if (!components.Head) {
 	components.Head = './src/components/Head.astro';
 }
 // Override EditLink whenever an editLink baseUrl is configured so the action
