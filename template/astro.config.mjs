@@ -15,10 +15,10 @@ const components = { ...(starlightConfig.components ?? {}) };
 if (!components.Head) {
 	components.Head = './src/components/Head.astro';
 }
-// Override EditLink whenever an editLink baseUrl is configured so the action
-// can strip the synthetic `src/content/docs/` prefix from the URL when the
-// caller stores content at the repo root.
-if (starlightConfig.editLink?.baseUrl && !components.EditLink) {
+// Override EditLink to add the "Download Markdown" link (always) and to strip
+// the synthetic `src/content/docs/` prefix from the edit URL when the caller
+// stores content at the repo root (STARLIGHT_EDIT_LINK_STRIP).
+if (!components.EditLink) {
 	components.EditLink = './src/components/EditLink.astro';
 }
 starlightConfig.components = components;
