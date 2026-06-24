@@ -38,5 +38,13 @@ export default defineConfig({
 	integrations: [starlight(starlightConfig)],
 	vite: {
 		plugins: [tailwindcss()],
+		// Astro 7 builds with rolldown-vite, which (unlike the old esbuild
+		// pipeline) does not honor the per-file `@jsxImportSource` pragma in
+		// src/og/renderer.tsx. Configure JSX -> satori/jsx globally; the OG
+		// renderer is the only .tsx in the project, so this is safe.
+		esbuild: {
+			jsx: 'automatic',
+			jsxImportSource: 'satori/jsx',
+		},
 	},
 });
