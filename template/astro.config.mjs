@@ -1,6 +1,6 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import { unified } from '@astrojs/markdown-remark';
+import { satteri } from '@astrojs/markdown-satteri';
 import tailwindcss from '@tailwindcss/vite';
 
 import links from './src/markdown/links.ts';
@@ -27,9 +27,9 @@ export default defineConfig({
 	site: process.env.STARLIGHT_SITE || user.site,
 	base: process.env.STARLIGHT_BASE || user.base,
 	markdown: {
-		processor: unified({
-			remarkPlugins: [youtube, ...(user.markdown?.remarkPlugins ?? [])],
-			rehypePlugins: [links(user.linksHostname), ...(user.markdown?.rehypePlugins ?? [])],
+		processor: satteri({
+			mdastPlugins: [youtube, ...(user.markdown?.mdastPlugins ?? [])],
+			hastPlugins: [links(user.linksHostname), ...(user.markdown?.hastPlugins ?? [])],
 		}),
 	},
 	image: {
